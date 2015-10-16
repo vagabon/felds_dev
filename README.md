@@ -39,6 +39,9 @@ Application en IONIC (AngularJS + Apache Cordova) : Fruits et légumes de saison
 
 Debuggage sur Android : https://chrome.google.com/webstore/detail/adb/dpngiggdglpdnjdoaefidgiigpemgage
 
+### Test
+
+http://vagabond.synology.me/felds/www/
 
 ### Création d'un projet ionic
 
