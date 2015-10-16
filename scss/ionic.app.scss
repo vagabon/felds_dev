@@ -1,0 +1,118 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+
+@font-face { font-family: "Labtop"; src: url('../fonts/Labtop.ttf'); }
+@font-face { font-family: "Labtop"; font-style: italic; src: url('../fonts/Labtop-Italic.ttf'); }
+@font-face { font-family: "Labtop"; font-weight: bold; src: url('../fonts/Labtop-Bold.ttf'); }
+@font-face { font-family: "Labtop"; font-style: italic; font-weight: bold; src: url('../fonts/Labtop-BoldItalic.ttf'); }
+body { font-family: "Labtop", Helvetica, Arial, sans-serif; }
+
+a { text-decoration: none; }
+.back-text { display: none !important; }
+.item { font-size: 30px; }
+
+.bar .title { font-size: 30px ! important; }
+.bar-subheader {
+  height: 112px; background: #f4f2f2;
+  .slider { height: 55px; }
+  .saut { height: 8px; }
+  .imageMois { height: 55px; }
+  .imageType { height: 40px; }
+}
+.has-subheader { top: 155px; }
+.bar-footer { padding: 0; }
+/* iOS Specific Overrides to fix logo overlap */
+.platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * { margin-top: 25px; }
+.platform-ios7.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) { height: 70px; }
+.platform-ios7.platform-cordova:not(.fullscreen) .has-header { top: 113px; }
+
+.hide { display: none; }
+.show { display: block; }
+
+.switchSlide { font-size: 119px; height: 47px; color: black; }
+.switchSlideLeft { float: left; margin: 7px -13px; }
+.switchSlideRight { float: right; margin: 7px -13px; }
+#slideType .switchSlide { font-size: 63px; }
+
+.slider { height: 100%; text-align: center }
+.scroll { height: 100% }
+
+.legume { color: #8bce78; }
+.fruit { color: #f0912c; }
+.error { color: #ff8889; }
+
+.scrollable {
+  overflow-x: auto;
+
+  .scrollableContent {
+    display: table; font-size: 13px; margin: auto;
+
+    .active { background: #808080; color: #ffffff; }
+    .menuItem:first-child { border-left: 1px solid #d4d4d4; }
+    .menuItem, .item { display: table-cell; padding: 4px 4px 0; text-align: center; vertical-align: top; min-width: 79px; cursor: pointer; }
+    .titre { line-height: 14px; padding-top: 4px; width: 79px; }
+  }
+}
+
+#page-table { height: 100%; width: 100%; border-collapse: collapse; text-align: center; }
+#page-td { height: 100%; padding: 0; vertical-align: top; }
+div#global { width: 28%; height: 100%; display: block; margin: 20px auto; text-align: center; }
+.rigthFelds, .leftFelds {
+  width: 320px; display: inline-block; vertical-align: top; text-align: left; padding: 0px 15px; font-size: 2.5em; line-height: 0.8em; font-style: italic; color: #8f9092;
+  .nom { font-size: 3em; line-height: 0.8em; font-style: normal; }
+  .sautNom { height: 20px; }
+  div { line-height: 1.2em; }
+  b { color: #000; }
+}
+.rigthFelds { text-align: justify; }
+.leftFelds {
+  width: 200px; display: inline-block; vertical-align: top;  padding: 0px; font-size: 2em; line-height: 1em; font-style: normal;
+  img { width: 200px; }
+}
+.recette {
+  width: 520px; heigth: 20px; color: #FFF; display: block; margin: auto; font-size: 2em; padding: 15px; bottom: 60px; position: absolute;
+  &.recettelegume { background: #8bce78 } &.recettefruit { background: #f0912c }
+}
+
+@media screen and (max-width: 800px) {
+  div#global { width: 100%; }
+  .rigthFelds {
+    width: 60%; font-size: 1.7em; padding-right: 0px;
+    .nom { font-size: 2.2em; line-height: 0.8em; text-align: left; }
+  }
+  .leftFelds {
+    width: 32%; font-size: 1.4em;
+    img { width: 100%; }
+  }
+  .recette { width: 100%; }
+  .button.button-full { text-align: left; padding-left: 10px; }
+}
+
+#todoList {
+  .item {
+    margin: 0px; padding: 0px; border: none;
+    img { vertical-align: bottom; }
+  }
+  a.item-content { padding: 0 !important; }
+  .button.button-block, .button.button-full { margin-top: 0px; margin-bottom: 0px; font-size: 22px }
+}

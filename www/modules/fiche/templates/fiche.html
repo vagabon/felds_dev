@@ -1,0 +1,33 @@
+<ion-view view-title="Fruits et légumes de saison">
+  <ion-content>
+
+    <ion-slide-box delegate-handle="slideBox">
+        <ion-slide ng-repeat="playlist in playlists" ng-if="playlist.hide == false">
+          <table id="page-table"><tr><td id="page-td"><div id="global">
+              <div class="leftFelds">
+                <img ng-src="img/icones/{{playlist.image}}" />
+                <div class="sautNom"></div>
+                <div class="{{playlist.type}}"><b>Saison</b><br>{{playlist.saison}}</div>
+                <div class="sautNom"></div>
+                <div ng-if="playlist.disponible"><p><b>Dispo</b><br>{{playlist.disponible}}</p></div>
+                <div class="sautNom"></div>
+                <div class="error" ng-if="playlist.nonDisponible"><p><b>Non Dispo</b><br>{{playlist.nonDisponible}}</p></div>
+                <div class="sautNom"></div>
+              </div>
+              <div class="rigthFelds">
+                <div class="nom {{playlist.type}}">{{playlist.nom}}</div>
+                <div class="sautNom"></div>
+                <div class="sautNom"></div>
+                <div ng-if="playlist.conservation_plat"><b>{{playlist.conservation_plat}}</b> à l'air ambiant</div>
+                <div ng-if="playlist.conservation_frigo"><b>{{playlist.conservation_frigo}}</b> au réfrigérateur</p></div>
+                <div class="sautNom"></div>
+                <div>{{playlist.conseils}}</div>
+                <div class="sautNom"></div>
+              </div>
+              <a class="recette recette{{playlist.type}}" ng-click="urlMarmiton('{{playlist.nom}}')">Idée recette</a>
+          </div></td></tr></table>
+        </ion-slide>
+    </ion-slide-box>
+
+  </ion-content>
+</ion-view>
