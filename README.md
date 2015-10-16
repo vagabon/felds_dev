@@ -42,11 +42,11 @@ Debuggage sur Android : https://chrome.google.com/webstore/detail/adb/dpngiggdgl
 
 ### Création d'un projet ionic
 
-> ionic start <nomProjet> <templates>
+> ionic start "nomProjet" "templates"
 
 Templates disponibles : tabs (par défaut), sidemenu, maps, salesforce, tests, complex-list, blank
 
-> cd <nomProjet>
+> cd "nomProjet"
 
 > ionic platform android (Nécessite adb + SDK + JDK)
 
