@@ -5,10 +5,12 @@ define([
   'felds/services/storage'
 ], function () {
 
+  var moduleName = 'felds.service';
+
   /**
    * Service.
    */
-  angular.module('felds.service', [
+  angular.module(moduleName, [
     'felds.storage'
   ]).factory('feldsService', function ($http, $q, localStorage) {
     'use strict';
@@ -83,5 +85,7 @@ define([
     };
     return service;
   });
+
+  return moduleName;
 });
 

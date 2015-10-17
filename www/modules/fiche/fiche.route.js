@@ -1,20 +1,24 @@
 'use strict';
 define([
   'fiche/fiche.controller'
-], function () {
+], function (ficheController) {
   var moduleName = 'felds.fiche.route';
-  angular.module(moduleName, [
-    'felds.fiche.controller'
-  ]).config(function ($stateProvider) {
+
+  angular.module(moduleName, [ficheController]).config(routeConfig);
+
+  routeConfig.$inject = ['$stateProvider'];
+
+  function routeConfig($stateProvider){
     $stateProvider.state('app.fiche', {
       url: '/fiche/:nom/:mois/:type',
       views: {
         'menuContent': {
           templateUrl: 'modules/fiche/templates/fiche.html',
-          controller: 'PlaylistCtrl'
+          controller: 'FeldsFicheController as vm'
         }
       }
     });
-  });
+  }
+
   return moduleName;
 });

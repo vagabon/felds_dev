@@ -2,20 +2,25 @@
 
 define([
   'liste/liste.controller'
-], function () {
+], function (listeController) {
+
   var moduleName = 'felds.liste.route';
-  angular.module(moduleName, [
-    'felds.liste.controller'
-  ]).config(function ($stateProvider) {
+
+  angular.module(moduleName, [listeController]).config(RouteConfig);
+
+  RouteConfig.$inject = ['$stateProvider'];
+
+  function RouteConfig($stateProvider) {
     $stateProvider.state('app.liste', {
       url: '/liste',
       views: {
         'menuContent': {
           templateUrl: 'modules/liste/templates/liste.html',
-          controller: 'PlaylistsCtrl'
+          controller: 'FeldsListeController as vm'
         }
       }
-    })
-  });
+    });
+  };
+
   return moduleName;
 });

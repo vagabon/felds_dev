@@ -90,7 +90,7 @@ div#global { width: 28%; height: 100%; display: block; margin: 20px auto; text-a
   img { width: 200px; }
 }
 .recette {
-  width: 520px; heigth: 20px; color: #FFF; display: block; margin: auto; font-size: 2em; padding: 15px; bottom: 60px; position: absolute;
+  width: 520px; heigth: 20px; color: #FFF; display: block; margin: auto; font-size: 2em; padding: 15px; bottom: 60px; position: absolute; cursor: pointer;
   &.recettelegume { background: #8bce78 } &.recettefruit { background: #f0912c }
 }
 

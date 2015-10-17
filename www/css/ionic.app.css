@@ -9473,7 +9473,8 @@ div#global {
   font-size: 2em;
   padding: 15px;
   bottom: 60px;
-  position: absolute; }
+  position: absolute;
+  cursor: pointer; }
   .recette.recettelegume {
     background: #8bce78; }
   .recette.recettefruit {

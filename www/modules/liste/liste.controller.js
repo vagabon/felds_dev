@@ -2,71 +2,82 @@
 
 define([
   'felds/services/felds.service'
-], function () {
-  angular.module('felds.liste.controller', [
-    'felds.service'
-  ]).controller('PlaylistsCtrl', function ($scope, feldsService, $ionicSlideBoxDelegate, $timeout) {
-    $scope.hideFleche = ionic.Platform.platforms != null && ionic.Platform.platforms[0] == "browser" && (!ionic.Platform.isIPad() && !ionic.Platform.isAndroid() && !ionic.Platform.isIOS());
+], function (feldsService) {
+
+  var moduleName = 'felds.liste.controller';
+
+  angular.module(moduleName, [feldsService]).controller('FeldsListeController', FeldsListeController);
+
+  FeldsListeController.$inject = ['feldsService', '$ionicSlideBoxDelegate', '$timeout'];
+
+  function FeldsListeController(feldsService, $ionicSlideBoxDelegate, $timeout) {
+    var vm = this;
+
+    vm.hideFleche = ionic.Platform.platforms != null && ionic.Platform.platforms[0] == "browser" && (!ionic.Platform.isIPad() && !ionic.Platform.isAndroid() && !ionic.Platform.isIOS());
+
     feldsService.load().then(function () {
-      $scope.month = feldsService.month;
-      $scope.mois = feldsService.mois;
+      vm.month = feldsService.month;
+      vm.mois = feldsService.mois;
 
       var date = new Date();
-      $scope.moisSelect = date.getMonth();
+      vm.moisSelect = date.getMonth();
       $timeout(function () {
         $ionicSlideBoxDelegate.$getByHandle('slideMois').update();
-        $ionicSlideBoxDelegate.$getByHandle('slideMois').slide($scope.moisSelect);
+        $ionicSlideBoxDelegate.$getByHandle('slideMois').slide(vm.moisSelect);
       }, 0);
-      $scope.typeSelect = "";
+      vm.typeSelect = "";
       $timeout(function () {
         $ionicSlideBoxDelegate.$getByHandle('slideType').update();
         $ionicSlideBoxDelegate.$getByHandle('slideType').slide(0);
       }, 0);
 
-      feldsService.afficherFromMonth($scope.moisSelect, $scope.typeSelect);
-      $scope.playlists = feldsService.felds;
+      feldsService.afficherFromMonth(vm.moisSelect, vm.typeSelect);
+      vm.playlists = feldsService.felds;
     });
 
-    $scope.slideMoisChanged = function (slideNum) {
-      $scope.moisSelect = slideNum;
-      feldsService.afficherFromMonth($scope.moisSelect, $scope.typeSelect);
-      $scope.playlists = feldsService.felds;
-    }
-    $scope.slideTypeChanged = function (slideNum) {
-      $scope.typeSelect = slideNum == 2 ? "fruit" : slideNum == 1 ? "legume" : "";
-      feldsService.afficherFromMonth($scope.moisSelect, $scope.typeSelect);
-      $scope.playlists = feldsService.felds;
-    }
+    vm.slideMoisChanged = function(slideNum) {
+      vm.moisSelect = slideNum;
+      feldsService.afficherFromMonth(vm.moisSelect, vm.typeSelect);
+      vm.playlists = feldsService.felds;
+    };
 
-    $scope.changeMois = function (mois) {
-      $scope.moisSelect = $scope.moisSelect + mois;
-      if ($scope.moisSelect == -1) {
-        $scope.moisSelect = 11;
-      } else if ($scope.moisSelect == 12) {
-        $scope.moisSelect = 0;
+    vm.slideTypeChanged = function(slideNum) {
+      vm.typeSelect = slideNum == 2 ? "fruit" : slideNum == 1 ? "legume" : "";
+      feldsService.afficherFromMonth(vm.moisSelect, vm.typeSelect);
+      vm.playlists = feldsService.felds;
+    };
+
+    vm.changeMois = function (mois) {
+      vm.moisSelect = vm.moisSelect + mois;
+      if (vm.moisSelect == -1) {
+        vm.moisSelect = 11;
+      } else if (vm.moisSelect == 12) {
+        vm.moisSelect = 0;
       }
       $timeout(function () {
-        $ionicSlideBoxDelegate.$getByHandle('slideMois').slide($scope.moisSelect);
+        $ionicSlideBoxDelegate.$getByHandle('slideMois').slide(vm.moisSelect);
       }, 0);
-      feldsService.afficherFromMonth($scope.moisSelect, $scope.typeSelect);
-      $scope.playlists = feldsService.felds;
+      feldsService.afficherFromMonth(vm.moisSelect, vm.typeSelect);
+      vm.playlists = feldsService.felds;
     };
 
-    $scope.changeType = function (type) {
+    vm.changeType = function (type) {
       var newType = type;
       if (type == 1) {
-        if ($scope.typeSelect == "") newType = "legume";
-        if ($scope.typeSelect == "legume") newType = "fruit";
-        if ($scope.typeSelect == "fruit") newType = "";
+        if (vm.typeSelect == "") newType = "legume";
+        if (vm.typeSelect == "legume") newType = "fruit";
+        if (vm.typeSelect == "fruit") newType = "";
       } else if (type == -1) {
-        if ($scope.typeSelect == "") newType = "fruit";
-        if ($scope.typeSelect == "legume") newType = "";
-        if ($scope.typeSelect == "fruit") newType = "legume";
+        if (vm.typeSelect == "") newType = "fruit";
+        if (vm.typeSelect == "legume") newType = "";
+        if (vm.typeSelect == "fruit") newType = "legume";
       }
-      $scope.typeSelect = newType;
-      $ionicSlideBoxDelegate.$getByHandle('slideType').slide($scope.typeSelect == "fruit" ? 2 : $scope.typeSelect == "legume" ? 1 : 0);
-      feldsService.afficherFromMonth($scope.moisSelect, $scope.typeSelect);
-      $scope.playlists = feldsService.felds;
+      vm.typeSelect = newType;
+      $ionicSlideBoxDelegate.$getByHandle('slideType').slide(vm.typeSelect == "fruit" ? 2 : vm.typeSelect == "legume" ? 1 : 0);
+      feldsService.afficherFromMonth(vm.moisSelect, vm.typeSelect);
+      vm.playlists = feldsService.felds;
     };
-  })
+  }
+
+  return moduleName;
 });

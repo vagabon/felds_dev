@@ -3,41 +3,45 @@
 
 define([], function () {
   var moduleName = 'felds.controller';
-  angular.module(moduleName, []).controller('AppCtrl', function ($scope, $ionicModal, localStorage) {
-    // suppression des données sauvegardés en cache
+
+  angular.module(moduleName, []).controller('FeldsController', FeldsController);
+
+  FeldsController.$inject = ['$scope', '$ionicModal', 'localStorage', '$timeout'];
+
+  function FeldsController($scope, $ionicModal, localStorage, $timeout) {
+
+    var vm = this;
+
+    vm.loginData= {};
+    vm.modal  = null;
+
     localStorage.save([]);
 
-    /** PARTIE LOGIN A SUPPRIMER */
-      // Form data for the login modal
-    $scope.loginData = {};
+    vm.load = function() {
+      // Create the login modal that we will use later
+      $ionicModal.fromTemplateUrl('modules/felds/templates/login.html', { scope: $scope, controller: '' }).then(function (modal) {
+        vm.modal = modal;
+      });
+    }
+    vm.load();
 
-    // Create the login modal that we will use later
-    $ionicModal.fromTemplateUrl('modules/felds/templates/login.html', {
-      scope: $scope
-    }).then(function (modal) {
-      $scope.modal = modal;
-    });
-
-    // Triggered in the login modal to close it
-    $scope.closeLogin = function () {
-      $scope.modal.hide();
+    vm.closeLogin = function () {
+      console.log("test")
+      vm.modal.hide();
     };
 
-    // Open the login modal
-    $scope.login = function () {
-      $scope.modal.show();
+    vm.login = function () {
+      vm.modal.show();
     };
 
-    // Perform the login action when the user submits the login form
-    $scope.doLogin = function () {
-      console.log('Doing login', $scope.loginData);
-
-      // Simulate a login delay. Remove this and replace with your login
-      // code if using a login system
+    vm.doLogin = function () {
+      console.log('Doing login', vm.loginData);
       $timeout(function () {
-        $scope.closeLogin();
+        vm.closeLogin();
       }, 1000);
     };
-  })
+
+  }
+
   return moduleName;
 });
