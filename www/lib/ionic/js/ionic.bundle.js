@@ -47610,8 +47610,7 @@ IonicModule
 
     backButton: {
       icon: 'ion-ios-arrow-back',
-      // GC : text: 'Back'
-      text: '',
+      text: 'Back',
       previousTitleText: true
     },
 

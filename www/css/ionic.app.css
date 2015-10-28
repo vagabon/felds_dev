@@ -9310,6 +9310,9 @@ a.button {
 body {
   font-family: "Labtop", Helvetica, Arial, sans-serif; }
 
+.menu-content .scroll-content .list {
+  pointer-events: all; }
+
 a {
   text-decoration: none; }
 

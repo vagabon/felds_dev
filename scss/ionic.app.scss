@@ -27,6 +27,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @font-face { font-family: "Labtop"; font-style: italic; font-weight: bold; src: url('../fonts/Labtop-BoldItalic.ttf'); }
 body { font-family: "Labtop", Helvetica, Arial, sans-serif; }
 
+.menu-content .scroll-content .list { pointer-events: all; }
+
 a { text-decoration: none; }
 .back-text { display: none !important; }
 .item { font-size: 30px; }

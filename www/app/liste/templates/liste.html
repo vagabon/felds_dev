@@ -1,0 +1,36 @@
+<ion-view view-title="Fruits et légumes de saison">
+  <ion-header-bar class="bar-subheader">
+    <a href="#" class="switchSlide switchSlideLeft" ng-click="vm.changeMois(-1)" ng-if="vm.hideFleche"><</a>
+    <a href="#" class="switchSlide switchSlideRight" ng-click="vm.changeMois(1)" ng-if="vm.hideFleche">></a>
+    <ion-slide-box delegate-handle="slideMois" show-pager="false" on-slide-changed="vm.slideMoisChanged(index)">
+      <ion-slide ng-repeat="moi in vm.mois">
+        <img class="imageMois" ng-src="img/mois/{{$index}}.png">
+      </ion-slide>
+    </ion-slide-box>
+    <div class="saut"></div>
+    <a href="#" class="switchSlide switchSlideLeft" ng-click="vm.changeType(-1)" ng-if="vm.hideFleche"><</a>
+    <a href="#" class="switchSlide switchSlideRight" ng-click="vm.changeType(1)" ng-if="vm.hideFleche">></a>
+    <ion-slide-box id="slideType" delegate-handle="slideType" show-pager="false" on-slide-changed="vm.slideTypeChanged(index)">
+      <ion-slide>
+        <img class="imageType" src="img/tous.png">
+      </ion-slide>
+      <ion-slide>
+        <img class="imageType" src="img/legume.png">
+      </ion-slide>
+      <ion-slide>
+        <img class="imageType" src="img/fruit.png">
+      </ion-slide>
+    </ion-slide-box>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list id="todoList">
+      <ion-item ng-repeat="playlist in vm.playlists" href="#/fiche/{{playlist.nom}}/{{vm.moisSelect}}/{{vm.typeSelect}}" ng-class="{hide: playlist.hide}">
+        <button class="button button-full">
+          <img ng-src="img/icones/{{playlist.image}}" width="40" />
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="{{playlist.type}}">{{playlist.nom}}</span>
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
