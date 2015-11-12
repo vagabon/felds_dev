@@ -9,7 +9,7 @@ require([
     'felds/felds.route',
     'liste/liste.route',
     'fiche/fiche.route'
-  ], function (feldsRoute, listeRoute, ficheRoute) {
+  ], function (ionicSidemenuOverlaying, feldsRoute, listeRoute, ficheRoute) {
     angular.module('felds', [
       'ionic',
       'ionic-sidemenu-overlaying',
