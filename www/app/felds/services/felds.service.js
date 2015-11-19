@@ -13,10 +13,10 @@ define([
       month: ["jan", "fev", "mar", "avr", "mai", "juin", "juil", "aou", "sep", "oct", "nov", "dec"],
       mois: JSON.parse('[{"nom": "Janvier", "active": "active"},{"nom": "Février"},{"nom": "Mars"},{"nom": "Avril"},{"nom": "Mai"},{"nom": "Juin"},{"nom": "Juillet"},{"nom": "Août"},{"nom": "Septembre"},{"nom": "Octobre"},{"nom": "Novembre"},{"nom": "Décembre"}]'),
       felds: null,
-      load: function () {
+      all: [],
+      loadService: function () {
         var deferred = $q.defer();
         if (service.felds == null) {
-          console.log("Chargement du json...");
           $http.get('json/felds.json').then(function (res) {
             service.felds = res.data;
             service.init();
@@ -56,18 +56,19 @@ define([
         service.felds.sort(function sortByName(key1, key2) {
           return key1.nom > key2.nom ? 1 : -1;
         });
+
+        service.allMonth();
       },
-      afficherFromMonth: function (mois, type) {
-        for (var i = 0, len = service.mois.length; i < len; i++) {
-          service.mois[i].active = mois == i;
-        }
+      allMonth: function () {
+        var type = "";
         if (service.felds != null) {
-          for (var i = 0, len = service.felds.length; i < len; i++) {
-            if (service.felds[i][service.month[mois]] === "S" &&
-              ((type == "legume" && service.felds[i].type == type) || (type == "fruit" && service.felds[i].type == type) || type == "")) {
-              service.felds[i].hide = false;
-            } else {
-              service.felds[i].hide = true;
+          for (var i = 0; i < 12; i++) {
+            service.all[i] = [];
+            for (var j = 0, len = service.felds.length; j < len; j++) {
+              if (service.felds[j][service.month[i]] === "S" &&
+                ((type == "legume" && service.felds[j].type == type) || (type == "fruit" && service.felds[j].type == type) || type == "")) {
+                service.all[i].push(service.felds[j]);
+              }
             }
           }
         }

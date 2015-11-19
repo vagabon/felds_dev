@@ -33,6 +33,20 @@ a { text-decoration: none; }
 .back-text { display: none !important; }
 .item { font-size: 30px; }
 
+
+.slider-slide h3 { color:#fff; margin-top:10px; }
+.scroll{ height:100%; }
+.tabbed-slidebox .tsb-icons:after{ display:none; }
+.tsb-icons, .tabbed-slidebox .tsb-icons { background: transparent; color: #FFFFFF; }
+.tabbed-slidebox .tsb-icons { margin: 0; padding: 0; }
+.tabbed-slidebox .tsb-icons img { height: 40px; filter: grayscale(1); -webkit-filter: grayscale(1); -moz-filter: grayscale(1); -o-filter: grayscale(1); -ms-filter: grayscale(1); }
+.tabbed-slidebox .tsb-icons .active img { height: 50px; filter: none; -webkit-filter: none; -moz-filter: none; -o-filter: none; -ms-filter: none; }
+.tabbed-slidebox .tsb-icons .scroll a.active { border-bottom-color: #c4c4c4; margin-top: 5px; font-size: 1em; }
+.tabbed-slidebox .tsb-icons .scroll a { font-size: 2.2em; }
+.tabbed-slidebox .slider-slide { background-color: transparent; }
+.tabbed-slidebox .padding { padding: 0; }
+
+
 .bar .title { font-size: 30px ! important; }
 .bar-subheader {
   height: 112px; background: #f4f2f2;
@@ -80,7 +94,7 @@ a { text-decoration: none; }
 #page-td { height: 100%; padding: 0; vertical-align: top; }
 div#global { width: 28%; height: 100%; display: block; margin: 20px auto; text-align: center; }
 .rigthFelds, .leftFelds {
-  width: 320px; display: inline-block; vertical-align: top; text-align: left; padding: 0px 15px; font-size: 2.5em; line-height: 0.8em; font-style: italic; color: #8f9092;
+  width: 320px; display: inline-block; vertical-align: top; text-align: left; padding: 0px 15px; font-size: 2.5em; line-height: 0.8em; font-style: italic; color: #000;
   .nom { font-size: 3em; line-height: 0.8em; font-style: normal; }
   .sautNom { height: 20px; }
   div { line-height: 1.2em; }
@@ -103,14 +117,14 @@ div#global { width: 28%; height: 100%; display: block; margin: 20px auto; text-a
     .nom { font-size: 2.2em; line-height: 0.8em; text-align: left; }
   }
   .leftFelds {
-    width: 32%; font-size: 1.4em;
+    width: 32%; font-size: 1.6em;
     img { width: 100%; }
   }
   .recette { width: 100%; }
   .button.button-full { text-align: left; padding-left: 10px; }
 }
 
-#todoList {
+.todoList {
   .item {
     margin: 0px; padding: 0px; border: none;
     img { vertical-align: bottom; }

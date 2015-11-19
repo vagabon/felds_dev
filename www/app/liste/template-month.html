@@ -1,0 +1,12 @@
+<ion-content>
+  <ion-list class="todoList">
+    <ion-item ng-repeat="playlist in vm.feldsByMonth" href="#/fiche/{{playlist.nom}}/{{vm.month}}/{{vm.typeSelect}}"
+              ng-class="{hide: playlist.hide}">
+      <button class="button button-full">
+        <img ng-src="img/icones/{{playlist.image}}" width="40"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="{{playlist.type}}">{{playlist.nom}}</span>
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>
